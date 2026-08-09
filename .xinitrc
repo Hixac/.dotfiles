@@ -44,4 +44,5 @@ fi
 # exec i3
 dbus-update-activation-environment --systemd DISPLAY XAUTHORITY
 setxkbmap -layout us,ru
+xbindkeys
 exec awesome

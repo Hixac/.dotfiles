@@ -104,3 +104,5 @@ fi
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 
+
+[ -f "/home/hixac/.ghcup/env" ] && . "/home/hixac/.ghcup/env" # ghcup-env

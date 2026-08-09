@@ -383,6 +383,7 @@ vim.lsp.config('rust_analyzer', {
 vim.lsp.enable("clangd")
 vim.lsp.enable("bashls")
 vim.lsp.enable("lua_ls")
+vim.lsp.enable("hls")
 vim.lsp.enable("basedpyright")
 vim.lsp.enable("ts_ls")
 vim.lsp.enable("neocmake")
@@ -482,7 +483,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, opts)
         vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, opts)
 
-        vim.keymap.set('n', '<leader>rr', ':LspRestart<CR>')
+        vim.keymap.set('n', '<leader>rr', ':lsp restart<CR>')
     end,
 })
 
@@ -588,6 +589,14 @@ require("lazy").setup({
         config = function()
             vim.keymap.set("n", "<leader>ff", ":FzfLua files<CR>")
             vim.keymap.set("n", "<leader>ls", ":FzfLua live_grep<CR>")
+--            require('fzf-lua').setup({
+--                keymap = {
+--                    builtin = {
+--                        ["<C-d>"] = "preview-half-page-down",
+--                        ["<C-u>"] = "preview-half-page-up",
+--                    },
+--                },
+--            })
         end
     },
     {
@@ -694,30 +703,6 @@ require("lazy").setup({
         end
     },
     {
-        "sphamba/smear-cursor.nvim",
-        opts = {
-            cursor_color = "#ff4000",
-            -- particles_enabled = true,
-            stiffness = 0.5,
-            trailing_stiffness = 0.2,
-            trailing_exponent = 5,
-            -- damping = 0.6,
-            -- gradient_exponent = 0,
-            -- gamma = 1,
-            never_draw_over_target = true, -- if you want to actually see under the cursor
-            hide_target_hack = true,       -- same
-            -- particle_spread = 1,
-            -- particles_per_second = 500,
-            -- particles_per_length = 50,
-            -- particle_max_lifetime = 800,
-            -- particle_max_initial_velocity = 20,
-            -- particle_velocity_from_cursor = 0.5,
-            -- particle_damping = 0.15,
-            -- particle_gravity = -50,
-            -- min_distance_emit_particles = 0,
-        },
-    },
-    {
         "karb94/neoscroll.nvim",
         opts = {
             hide_cursor = true,          -- Hide cursor while scrolling
@@ -763,6 +748,6 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = { "c", "cpp" },
   callback = function()
     vim.bo.cindent = true
-    vim.opt_local.cinoptions:append("0,g0,(0,Ws")
+    vim.opt_local.cinoptions:append("l1,0,g0,(0,Ws")
   end,
 })
