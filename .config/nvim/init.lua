@@ -599,29 +599,29 @@ require("lazy").setup({
 --            })
         end
     },
-    {
-       "Shatur/neovim-ayu",
-       config = function()
-          local colors = require('ayu.colors')
-          colors.generate() -- Pass `true` to enable mirage
-
-          require("ayu").setup({
-                mirage = false,
-                terminal = false,
-                overrides = {
-                    LineNrAbove = { fg = "#50406D" },
-                    LineNr = { fg = "#100000" },
-                    LineNrBelow = { fg = "#6D4050" },
-                }
-          })
-
-          vim.cmd.colorscheme("ayu")
-          vim.cmd([[
-              highlight Cursor guifg=#ffffff guibg=#ff0000
-              highlight lCursor guifg=#ffffff guibg=#ff0000
-            ]])
-       end,
-    },
+--     {
+--        "Shatur/neovim-ayu",
+--        config = function()
+--           local colors = require('ayu.colors')
+--           colors.generate() -- Pass `true` to enable mirage
+-- 
+--           require("ayu").setup({
+--                 mirage = false,
+--                 terminal = false,
+--                 overrides = {
+--                     LineNrAbove = { fg = "#50406D" },
+--                     LineNr = { fg = "#100000" },
+--                     LineNrBelow = { fg = "#6D4050" },
+--                 }
+--           })
+-- 
+--           vim.cmd.colorscheme("ayu")
+--           vim.cmd([[
+--               highlight Cursor guifg=#ffffff guibg=#ff0000
+--               highlight lCursor guifg=#ffffff guibg=#ff0000
+--             ]])
+--        end,
+--     },
     {
        'nvim-treesitter/nvim-treesitter',
        lazy = false,
@@ -751,3 +751,6 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.cinoptions:append("l1,0,g0,(0,Ws")
   end,
 })
+
+
+vim.cmd.colorscheme("ample")

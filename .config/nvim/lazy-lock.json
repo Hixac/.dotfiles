@@ -19,6 +19,7 @@
   "oil.nvim": { "branch": "master", "commit": "b73018b75affd13fa38e2fc94ef753b465f770d7" },
   "plenary.nvim": { "branch": "master", "commit": "74b06c6c75e4eeb3108ec01852001636d85a932b" },
   "rustaceanvim": { "branch": "main", "commit": "f4051fb4662c43a568ce809a37e47c0f4e3d7a31" },
+  "tender.vim": { "branch": "master", "commit": "b66dc330aff998dff9d44459d84bc1c5f4304fcc" },
   "vim-python-pep8-indent": { "branch": "master", "commit": "60ba5e11a61618c0344e2db190210145083c91f8" },
   "vimtex": { "branch": "master", "commit": "65e9e9a048e641403731187283e5ea986f00b3ff" }
 }
