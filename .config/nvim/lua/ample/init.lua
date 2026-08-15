@@ -58,8 +58,8 @@ local palettes = {
     mode_inactive_fg  = "#8b8878",
 
     -- floating windows / popups (Emacs popup-tip-face, company-tooltip)
-    popup_bg          = "#bdbdb3",
-    popup_fg          = "#212121",
+    popup_bg          = "#303030",
+    popup_fg          = "#bdbdb3",
     pmenu_sel_bg      = "#5180b3",
     pmenu_sel_fg      = "#bdbdb3",
 
