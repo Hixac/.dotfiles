@@ -578,6 +578,11 @@ require("lazy").setup({
              -- optional - Diff integration
             "sindrets/diffview.nvim",
         },
+        lazy = true,
+        cmd = "Neogit",
+        keys = {
+            { "<leader>w", "<cmd>Neogit<cr>", desc = "Show Neogit UI" }
+        }
     },
     {
         "ibhagwan/fzf-lua",
