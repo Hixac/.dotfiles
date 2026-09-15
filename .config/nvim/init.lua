@@ -380,12 +380,19 @@ vim.lsp.config('rust_analyzer', {
     }
 })
 
+vim.lsp.config['tsc'] = {
+    cmd = { 'tsc', '--lsp', '--stdio' },
+    filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
+    root_markers = { 'package.json', 'tsconfig.json', '.git' },
+}
+
 vim.lsp.enable("clangd")
 vim.lsp.enable("bashls")
 vim.lsp.enable("lua_ls")
 vim.lsp.enable("hls")
 vim.lsp.enable("basedpyright")
-vim.lsp.enable("ts_ls")
+-- vim.lsp.enable("ts_ls")
+vim.lsp.enable('tsc')
 vim.lsp.enable("neocmake")
 
 
