@@ -117,7 +117,7 @@ vim.keymap.set("n", "<leader>e", ":Explore<CR>", { desc = "Open file explorer" }
 
 vim.keymap.set("n", "J", "mzJ`z", { desc = "Join lines and keep cursor position" })
 
-if vim.fn.has('win32') then
+if vim.fn.has('win32') == 1 then
     vim.keymap.set("n", "<leader>rc", ":e ~/AppData/Local/nvim/init.lua<CR>", { desc = "Edit config" })
 else
     vim.keymap.set("n", "<leader>rc", ":e ~/.config/nvim/init.lua<CR>", { desc = "Edit config" })
