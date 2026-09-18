@@ -5,7 +5,6 @@
     [
       ./hardware-configuration.nix
       ./git.nix
-      ./nvim.nix
     ];
 
   boot.loader.systemd-boot.enable = true;
@@ -28,10 +27,6 @@
     displayManager.startx.enable = true;
     windowManager.awesome.enable = true;
     enable = true;
-  };
-
-  environment.sessionVariables = {
-    EDITOR = "nvim";
   };
 
   services.pipewire = {
@@ -68,6 +63,7 @@
     wget
     fzf
     xclip
+    vim
   ];
 
   environment.sessionVariables = {
