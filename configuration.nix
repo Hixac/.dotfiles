@@ -64,11 +64,15 @@
 
   environment.systemPackages = with pkgs; [
     git
-    neovim
     wget
     fzf
     xclip
   ];
+
+  environment.sessionVariables = {
+    CONFIGURATION_NIX = "/etc/nixos/configuration.nix";
+    DIR_NIX = "/etc/nixos/";
+  };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
