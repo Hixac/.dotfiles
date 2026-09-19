@@ -5,6 +5,7 @@
     [
       ./hardware-configuration.nix
       ./git.nix
+      ./programs.nix
     ];
 
   boot.loader.systemd-boot.enable = true;
@@ -57,16 +58,6 @@
       theme = "robbyrussell";
     };
   };
-
-  programs.nix-ld.enable = true;
-
-  environment.systemPackages = with pkgs; [
-    git
-    wget
-    fzf
-    xclip
-    vim
-  ];
 
   environment.sessionVariables = {
     CONFIGURATION_NIX = "/etc/nixos/configuration.nix";
