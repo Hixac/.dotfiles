@@ -741,6 +741,7 @@ require("lazy").setup({
   -- install = {  },
   -- automatically check for plugin updates
   checker = { enabled = false, notify = false },
+  lazyfile = os.getenv("HOME") .. "/.dotfiles/.config/nvim/lazy-lock.json",
 })
 
 
