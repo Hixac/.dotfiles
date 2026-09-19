@@ -11,5 +11,6 @@
     fzf
     xclip
     vim
+    flameshot
   ];
 }
