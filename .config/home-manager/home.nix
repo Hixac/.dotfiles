@@ -21,6 +21,19 @@
     extraConfig = builtins.readFile ../kitty/kitty.conf;
   };
 
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
+
+    oh-my-zsh = {
+      enable = true;
+      plugins = [ "git" "fzf" ];
+      theme = "duellj";
+    };
+  };
+
   home.sessionVariables = {
       EDITOR = "nvim";
   };
