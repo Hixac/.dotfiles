@@ -12,6 +12,7 @@
     nixd
     gh
     telegram-desktop
+    xdg-utils
   ];
 
   home.file = {
