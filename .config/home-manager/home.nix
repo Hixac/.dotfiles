@@ -9,6 +9,7 @@
     neovim
     devenv
     nerd-fonts.comic-shanns-mono
+    nixd
   ];
 
   home.file = {

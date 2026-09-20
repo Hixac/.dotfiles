@@ -398,6 +398,7 @@ vim.lsp.enable("basedpyright")
 -- vim.lsp.enable("ts_ls")
 vim.lsp.enable('tsc')
 vim.lsp.enable("neocmake")
+vim.lsp.enable("nixd")
 
 
 -- formatting
