@@ -1,11 +1,14 @@
 { config, lib, pkgs, ... }:
 
 {
+  # required to autoload fonts from packages installed via Home Manager
+  fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
     kitty
     firefox
     neovim
     devenv
+    nerd-fonts.comic-shanns-mono
   ];
 
   home.file = {
