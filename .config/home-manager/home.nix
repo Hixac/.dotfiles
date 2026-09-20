@@ -10,6 +10,7 @@
     devenv
     nerd-fonts.comic-shanns-mono
     nixd
+    gh
   ];
 
   home.file = {
