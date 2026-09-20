@@ -36,6 +36,7 @@
   };
   services.libinput.enable = true;
 
+  programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
   users.users.hixac = {
     shell = pkgs.zsh;
@@ -45,19 +46,6 @@
       tree
     ];
   }; # if you gonna create new user don't forget to use passwd
-
-  programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-    autosuggestions.enable = true;
-    syntaxHighlighting.enable = true;
-
-    ohMyZsh = {
-      enable = true;
-      plugins = [ "git" "fzf" ];
-      theme = "robbyrussell";
-    };
-  };
 
   environment.sessionVariables = {
     CONFIGURATION_NIX = "/etc/nixos/configuration.nix";
