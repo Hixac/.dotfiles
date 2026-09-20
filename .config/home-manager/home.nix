@@ -1,10 +1,11 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   home.packages = with pkgs; [
     kitty
     firefox
     neovim
+    devenv
   ];
 
   home.file = {
@@ -15,8 +16,9 @@
 
   programs.kitty = {
     enable = true;
+    shellIntegration.mode = "no-cursor";
     settings = {
-      shell = "${pkgs.zsh}/bin/zsh";
+      shell = "${config.programs.zsh.package}/bin/zsh";
     };
     extraConfig = builtins.readFile ../kitty/kitty.conf;
   };
@@ -32,10 +34,11 @@
       plugins = [ "git" "fzf" ];
       theme = "duellj";
     };
-  };
 
-  home.sessionVariables = {
-      EDITOR = "nvim";
+    initContent = lib.mkOrder 1000 ''
+      export EDITOR=nvim
+      export VISUAL=nvim
+    '';
   };
 
   services.flameshot = {
