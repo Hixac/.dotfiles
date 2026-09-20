@@ -36,6 +36,13 @@
   };
   services.libinput.enable = true;
 
+  services.zapret = {
+    enable = true;
+    params = [ "--dpi-desync=multidisorder" "--dpi-desync-split-pos=2" ];
+
+    blacklist = [ "gosuslugi.ru" ];
+  };
+
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
   users.users.hixac = {
