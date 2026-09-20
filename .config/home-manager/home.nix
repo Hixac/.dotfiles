@@ -11,6 +11,7 @@
     nerd-fonts.comic-shanns-mono
     nixd
     gh
+    telegram-desktop
   ];
 
   home.file = {
