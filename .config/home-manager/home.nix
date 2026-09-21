@@ -13,14 +13,12 @@
     gh
     telegram-desktop
     xdg-utils
-    tmux
   ];
 
   home.file = {
     ".config/awesome/".source = ../awesome;
     ".config/nvim/".source = ../nvim;
     ".xinitrc".source = ../../.xinitrc;
-    ".config/tmux/".source = ../tmux;
   };
 
   programs.kitty = {
@@ -30,6 +28,31 @@
       shell = "${config.programs.zsh.package}/bin/zsh";
     };
     extraConfig = builtins.readFile ../kitty/kitty.conf;
+  };
+
+  programs.tmux = {
+    enable = true;
+
+    prefix = "C-a";
+    shortcut = "a";
+
+    # tmux-sensible is handled by Home Manager’s sensibleOnTop option.
+    sensibleOnTop = true;
+
+    # Home Manager installs/loads these directly; TPM is not needed.
+    plugins = with pkgs.tmuxPlugins; [
+      resurrect
+      continuum
+    ];
+
+    extraConfig = ''
+      unbind C-b
+      set -g renumber-windows on
+
+      bind c  new-window      -c "#{pane_current_path}"
+      bind %  split-window -h -c "#{pane_current_path}"
+      bind '"' split-window -v -c "#{pane_current_path}"
+    '';
   };
 
   programs.zsh = {
