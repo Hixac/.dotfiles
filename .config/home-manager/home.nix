@@ -13,12 +13,14 @@
     gh
     telegram-desktop
     xdg-utils
+    tmux
   ];
 
   home.file = {
     ".config/awesome/".source = ../awesome;
     ".config/nvim/".source = ../nvim;
     ".xinitrc".source = ../../.xinitrc;
+    ".config/tmux/".source = ../tmux;
   };
 
   programs.kitty = {
