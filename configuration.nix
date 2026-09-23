@@ -13,6 +13,7 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.networkmanager.enable = true;
+  networking.nftables.enable = true;
 
   # Set your time zone.
   time.timeZone = "Asia/Krasnoyarsk";
@@ -35,13 +36,6 @@
     pulse.enable = true;
   };
   services.libinput.enable = true;
-
-  services.zapret = {
-    enable = true;
-    params = [ "--dpi-desync=multidisorder" "--dpi-desync-split-pos=2" ];
-
-    blacklist = [ "gosuslugi.ru" ];
-  };
 
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
