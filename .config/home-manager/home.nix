@@ -4,6 +4,8 @@
   # required to autoload fonts from packages installed via Home Manager
   fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
+    tree-sitter
+    luarocks
     kitty
     firefox
     neovim
@@ -52,6 +54,8 @@
       bind c  new-window      -c "#{pane_current_path}"
       bind %  split-window -h -c "#{pane_current_path}"
       bind '"' split-window -v -c "#{pane_current_path}"
+
+      set-option -g default-terminal "screen-256color"
     '';
   };
 
