@@ -1,6 +1,8 @@
 { config, lib, pkgs, ... }:
 
 {
+  nixpkgs.config.allowUnfree = true;
+
   # required to autoload fonts from packages installed via Home Manager
   fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
@@ -15,6 +17,10 @@
     gh
     telegram-desktop
     xdg-utils
+    doppler
+    android-studio
+    act
+    jdk
   ];
 
   home.file = {
@@ -75,6 +81,10 @@
       export EDITOR=nvim
       export VISUAL=nvim
     '';
+  };
+
+  programs.direnv = {
+    enable = true;
   };
 
   services.flameshot = {
