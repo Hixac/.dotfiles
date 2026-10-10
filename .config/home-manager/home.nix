@@ -73,7 +73,7 @@
 
     oh-my-zsh = {
       enable = true;
-      plugins = [ "git" "fzf" ];
+      plugins = [ "git" "fzf" "direnv" ];
       theme = "duellj";
     };
 
@@ -85,6 +85,7 @@
 
   programs.direnv = {
     enable = true;
+    nix-direnv.enable = true;
   };
 
   services.flameshot = {
