@@ -6,11 +6,14 @@
       ./hardware-configuration.nix
       ./git.nix
       ./programs.nix
+      ./steam.nix
     ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  nixpkgs.config.allowUnfree = true;
 
   networking.networkmanager.enable = true;
   networking.nftables.enable = true;
