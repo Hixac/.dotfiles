@@ -1,0 +1,3 @@
+# Minimal git configuration is placed in github repo.
+# That gitignore helps me to not push my secrets
+git.nix
