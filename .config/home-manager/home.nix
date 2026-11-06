@@ -19,8 +19,11 @@
     xdg-utils
     doppler
     android-studio
-    act
     jdk
+    qbittorrent
+    mpv
+    gimp
+    act
   ];
 
   home.file = {
@@ -80,12 +83,22 @@
     initContent = lib.mkOrder 1000 ''
       export EDITOR=nvim
       export VISUAL=nvim
+
+      . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
     '';
   };
 
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
+  };
+
+  programs.obs-studio.enable = true;
+
+  services.tg-ws-proxy = {
+    enable = true;
+    host = "127.0.0.1";
+    port = 1080;
   };
 
   services.flameshot = {
