@@ -16,7 +16,7 @@
   nixpkgs.config.allowUnfree = true;
 
   networking.networkmanager.enable = true;
-  networking.nftables.enable = true;
+  # networking.nftables.enable = true;
 
   # Set your time zone.
   time.timeZone = "Asia/Krasnoyarsk";
