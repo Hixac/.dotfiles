@@ -7,10 +7,13 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    llm-agents = {
+      url = "github:numtide/llm-agents.nix";
+    };
   };
 
   outputs =
-    { nixpkgs, home-manager, ... }:
+    { nixpkgs, home-manager, ... }@inputs:
     let
       system  = "x86_64-linux";
       pkgs    = nixpkgs.legacyPackages.${system};
@@ -40,6 +43,8 @@
             );
           }
         ];
+
+        extraSpecialArgs = { inherit inputs; };
       };
     };
 }

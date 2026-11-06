@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 {
   nixpkgs.config.allowUnfree = true;
@@ -6,6 +6,8 @@
   # required to autoload fonts from packages installed via Home Manager
   fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
+    inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.dsh
+
     tree-sitter
     luarocks
     kitty
