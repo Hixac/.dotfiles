@@ -7,7 +7,9 @@
   fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
     inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.dsh
+    inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.pdfvision
 
+    postgresql
     tree-sitter
     luarocks
     kitty
@@ -26,6 +28,7 @@
     mpv
     gimp
     act
+    libreoffice
   ];
 
   home.file = {
@@ -66,6 +69,8 @@
       bind %  split-window -h -c "#{pane_current_path}"
       bind '"' split-window -v -c "#{pane_current_path}"
 
+      setw -g mode-keys vi
+
       set-option -g default-terminal "screen-256color"
     '';
   };
@@ -101,6 +106,9 @@
     enable = true;
     host = "127.0.0.1";
     port = 1080;
+    # TLS-хендшейк к доменам CF-прокси режется DPI по SNI (см. диагностику):
+    # ws:// на порту 80 идёт без SNI и проходит. Цена — нет TLS до Cloudflare.
+    extraArgs = [ "--cf-disable-tls" ];
   };
 
   services.flameshot = {
