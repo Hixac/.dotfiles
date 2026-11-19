@@ -1,0 +1,39 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
+
+[project]
+name = "manyS"
+version = "0.0.1"
+description = ""
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [ ]
+
+[tool.poe.tasks]
+start = "uv run src/main.py"
+
+[dependency-groups]
+ci-pipeline = [ ]
+dev = [
+    "basedpyright>=1.34.0",
+    "flake8>=7.3.0",
+    "mypy>=1.19.0",
+    "poethepoet>=0.42.1",
+]
+
+[tool.basedpyright]
+include = ["src"]
+exclude = ["**/__pycache__"]
+
+typeCheckingMode = "recommended"
+reportAny = "none"
+reportExplicitAny = "none"
+reportIgnoreCommentWithoutRule = false
+reportUnannotatedClassAttribute = false
+reportMissingSuperCall = false
+reportMissingTypeStubs = false
+reportUnknownVariableType = false

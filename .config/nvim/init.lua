@@ -37,7 +37,7 @@ vim.opt.signcolumn="yes"
 vim.opt.colorcolumn="100"
 vim.opt.showmatch=true
 vim.opt.matchtime=2
-vim.opt.cmdheight=1
+vim.opt.cmdheight=0
 vim.opt.completeopt="menuone,noinsert,noselect"
 vim.opt.showmode=false
 vim.opt.pumheight=10
@@ -117,7 +117,11 @@ vim.keymap.set("n", "<leader>e", ":Explore<CR>", { desc = "Open file explorer" }
 
 vim.keymap.set("n", "J", "mzJ`z", { desc = "Join lines and keep cursor position" })
 
-vim.keymap.set("n", "<leader>rc", ":e ~/.config/nvim/init.lua<CR>", { desc = "Edit config" })
+if vim.fn.has('win32') == 1 then
+    vim.keymap.set("n", "<leader>rc", ":e ~/AppData/Local/nvim/init.lua<CR>", { desc = "Edit config" })
+else
+    vim.keymap.set("n", "<leader>rc", ":e ~/.config/nvim/init.lua<CR>", { desc = "Edit config" })
+end
 
 -- Command-line completion
 vim.opt.wildmenu = true
@@ -395,6 +399,7 @@ vim.lsp.enable("basedpyright")
 vim.lsp.enable('tsc')
 vim.lsp.enable("neocmake")
 vim.lsp.enable("ols")
+vim.lsp.enable("nixd")
 
 
 -- formatting
@@ -738,6 +743,7 @@ require("lazy").setup({
   -- install = {  },
   -- automatically check for plugin updates
   checker = { enabled = false, notify = false },
+  lazyfile = os.getenv("HOME") .. "/.dotfiles/.config/nvim/lazy-lock.json",
 })
 
 
@@ -767,3 +773,11 @@ vim.api.nvim_create_autocmd("FileType", {
 
 
 vim.cmd.colorscheme("ample")
+
+if vim.g.neovide then
+    vim.o.guifont = "Comic Shanns"
+
+    vim.keymap.set({ "n", "v" }, "<C-+>", ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.1<CR>")
+    vim.keymap.set({ "n", "v" }, "<C-->", ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.1<CR>")
+    vim.keymap.set({ "n", "v" }, "<C-0>", ":lua vim.g.neovide_scale_factor = 1<CR>")
+end
