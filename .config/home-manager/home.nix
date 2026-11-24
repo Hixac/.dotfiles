@@ -9,6 +9,7 @@
     inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.dsh
     inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.pdfvision
 
+    jujutsu
     postgresql
     tree-sitter
     luarocks
@@ -90,6 +91,7 @@
     initContent = lib.mkOrder 1000 ''
       export EDITOR=nvim
       export VISUAL=nvim
+      export DOTFILES=$HOME/.dotfiles/
 
       . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
     '';
