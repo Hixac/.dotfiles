@@ -390,6 +390,7 @@ vim.lsp.config['tsc'] = {
     root_markers = { 'package.json', 'tsconfig.json', '.git' },
 }
 
+
 vim.lsp.enable("clangd")
 vim.lsp.enable("bashls")
 vim.lsp.enable("lua_ls")
@@ -399,7 +400,51 @@ vim.lsp.enable("basedpyright")
 vim.lsp.enable('tsc')
 vim.lsp.enable("neocmake")
 vim.lsp.enable("ols")
-vim.lsp.enable("nixd")
+
+
+local function nixd_settings(root)
+    local flake = ('(builtins.getFlake "path:%s")'):format(root)
+    local function from_flake(nix_expr)
+        return { expr = ('let f = %s; in %s'):format(flake, nix_expr) }
+    end
+    return {
+        nixpkgs = from_flake(
+            'if f ? inputs && f.inputs ? nixpkgs then import f.inputs.nixpkgs { } else import <nixpkgs> { }'
+        ),
+        options = {
+            nixos = from_flake(
+                'if f ? nixosConfigurations && f.nixosConfigurations != { }'
+                    .. ' then f.nixosConfigurations.${builtins.head (builtins.attrNames f.nixosConfigurations)}.options'
+                    .. ' else { }'
+            ),
+            ['home-manager'] = from_flake(
+                'if f ? homeConfigurations && f.homeConfigurations != { }'
+                    .. ' then f.homeConfigurations.${builtins.head (builtins.attrNames f.homeConfigurations)}.options'
+                    .. ' else { }'
+            ),
+            ['flake-parts'] = from_flake(
+                'if f ? debug && f.debug ? options then f.debug.options else { }'
+            ),
+            ['flake-parts-per-system'] = from_flake(
+                'if f ? currentSystem && f.currentSystem ? options then f.currentSystem.options else { }'
+            ),
+        },
+    }
+end
+
+vim.lsp.config('nixd', {
+    cmd = { 'nixd' },
+    filetypes = { 'nix' },
+    root_markers = { 'flake.nix' },
+    settings = {},
+    on_init = function(client)
+        local root = client.root_dir or client.config.root_dir
+        if root and vim.fn.filereadable(root .. '/flake.nix') == 1 then
+            client.settings.nixd = nixd_settings(root)
+        end
+    end,
+})
+vim.lsp.enable('nixd')
 
 
 -- formatting

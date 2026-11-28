@@ -120,5 +120,7 @@
     };
   };
 
+  programs.raddebugger.enable = true;
+
   programs.home-manager.enable = true;
 }

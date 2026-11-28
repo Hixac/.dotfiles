@@ -10,6 +10,10 @@
     llm-agents = {
       url = "github:numtide/llm-agents.nix";
     };
+    raddebugger = {
+      url = "github:Hixac/raddebugger-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -42,6 +46,8 @@
                 modDir
             );
           }
+
+          inputs.raddebugger.homeModules.raddebugger
         ];
 
         extraSpecialArgs = { inherit inputs; };
